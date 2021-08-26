@@ -20,7 +20,14 @@ const linksReducer = (state = initialState, action) => {
 
     switch (type) {
         case ADD_LINK:
-            const newLinks = [...state.links, payload];
+            const newLinks = [
+                ...state.links, {
+                    ...payload,
+                    id: state.links.length + 1,
+                    votePoint: 0,
+                    createdDate: new Date().getTime()
+                }
+            ];
 
             saveList(newLinks);
 

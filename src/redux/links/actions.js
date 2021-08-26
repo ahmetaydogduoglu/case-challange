@@ -10,17 +10,9 @@ import {
 import { getList } from '../../helpers/localStorage';
 
 export const addLink = (data) => {
-    const state = store.getState().links;
-    const newData = {
-        ...data,
-        id: state.links.length + 1,
-        votePoint: 0,
-        createdDate: new Date().getTime()
-    };
-
     return {
         type: ADD_LINK,
-        payload: newData
+        payload: data
     };
 };
 

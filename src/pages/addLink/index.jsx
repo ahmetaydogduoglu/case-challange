@@ -30,10 +30,16 @@ const AddkLink = () => {
         if (linkName.trim().length > 0 && linkURL.trim().length > 0) {
             dispatch(addLink({ name: linkName, link: linkURL }));
             dispatch(showToast({ text: `${linkName} added.`, type: 'success' }));
-            
+
             setLinkName('');
             setLinkURL('');
+
+            history.goBack();
+
+            return;
         }
+
+        dispatch(showToast({ text: 'you should fill inputs', type: 'danger' }));
     }
 
     return (

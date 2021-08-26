@@ -40,34 +40,36 @@ const Pagination = ({ data, limit, renderData, noDataView }) => {
     const goPrevPage = () => {
         setCurrentPage(p => p - 1);
     }
-    // 
+
     return (
         <div className="pagination" test-id="pagination">
             {
-                data.length > 0 ? getData().map((item, index) => renderData(item, index)) : noDataView
+                data.length > 0 ? getData().map((item, index) => renderData(item, index)) : noDataView()
             }
-            <div className="pagination-paginationButtons">
-                {
-                    currentPage !== 1 && <span
-                        className="pagination-prev"
-                        onClick={goPrevPage}>PREV</span>
-                }
-                {
-                    totalPage.map(item => (
-                        <span
-                            onClick={() => setCurrentPageFromPagination(item)}
-                            className={classNames('pagination-button', { 'pagination-button-isActive': item === currentPage })}
-                            key={`paginationButton-${item}`}>
-                            {item}
-                        </span>
-                    ))
-                }
-                {
-                    currentPage !== totalPage.length && <span
-                        className="pagination-next"
-                        onClick={goNextPage}>NEXT</span>
-                }
-            </div>
+            {
+                data.length > 0 && <div className="pagination-paginationButtons">
+                    {
+                        currentPage !== 1 && <span
+                            className="pagination-prev"
+                            onClick={goPrevPage}>PREV</span>
+                    }
+                    {
+                        totalPage.map(item => (
+                            <span
+                                onClick={() => setCurrentPageFromPagination(item)}
+                                className={classNames('pagination-button', { 'pagination-button-isActive': item === currentPage })}
+                                key={`paginationButton-${item}`}>
+                                {item}
+                            </span>
+                        ))
+                    }
+                    {
+                        currentPage !== totalPage.length && <span
+                            className="pagination-next"
+                            onClick={goNextPage}>NEXT</span>
+                    }
+                </div>
+            }
         </div>
     )
 }
