@@ -1,6 +1,6 @@
 import { filters } from '../../helpers/filtersType';
 import { filterSorting } from '../../helpers/filterSort';
-import { saveList } from '../../helpers/localStorage';
+import { getList, saveList } from '../../helpers/localStorage';
 import {
     ADD_LINK,
     DECREASE_VOTE,
@@ -20,10 +20,23 @@ const linksReducer = (state = initialState, action) => {
 
     switch (type) {
         case ADD_LINK:
+            let prevLinks = [...state.links];
+            let lastId = state.links.length + 1;
+
+            if (state.links.length < 1) {
+                const listFormStorage = getList();
+
+                if (listFormStorage !== null && listFormStorage.length > 0) {
+                    prevLinks = [...listFormStorage];
+                    lastId = listFormStorage.length + 1;
+                }
+            }
+
             const newLinks = [
-                ...state.links, {
+                ...prevLinks,
+                {
                     ...payload,
-                    id: state.links.length + 1,
+                    id: lastId,
                     votePoint: 0,
                     createdDate: new Date().getTime()
                 }
@@ -91,6 +104,7 @@ const linksReducer = (state = initialState, action) => {
         }
         case DELETE_LINK: {
             const newLinks = [...state.links].filter(item => item.id !== payload);
+
             saveList(newLinks);
 
             return {
