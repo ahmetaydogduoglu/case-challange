@@ -1,0 +1,26 @@
+@import '../../styles/variables.scss';
+
+.appInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+
+    &-label {
+        font-size: 18px;
+        color: $text-color;
+        margin-bottom: 10px;
+    }
+
+    &-input {
+        font-size: 14px;
+        color: $text-color;
+        padding: 0 10px;
+        height: 44px;
+        width: 100%;
+        border-radius: $border-radius;
+        box-sizing: border-box;
+    }
+}

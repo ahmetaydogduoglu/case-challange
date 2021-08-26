@@ -1,0 +1,26 @@
+@import '../../styles/variables.scss';
+
+.toast {
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 100px;
+    width: 100%;
+    max-width: $max-width;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    border-radius: $border-radius;
+    color: #FFF;
+    font-size: 20px;
+
+    &--danger {
+        background: $danger-color;
+    }
+
+    &--success {
+        background: $success-color;
+    }
+}

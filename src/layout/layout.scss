@@ -1,0 +1,36 @@
+@import "../styles/variables.scss";
+
+.appLayout {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    &-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        max-width: 1024px;
+        width: 100%;
+    }
+
+    &-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;
+        border-bottom: 1px solid $base-color;
+        color: $text-color;
+    }
+
+    &-logo {
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    &-title {
+        font-size: 30px;
+        font-weight: 500;
+    }
+}
